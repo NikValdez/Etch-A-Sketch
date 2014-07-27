@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Etch-A-Sketch with a bit of funk</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+    
+
+	<!--I'm going to be building my own version of a browser based Etch-A-Sketch -->
+
+
+</head>
+
+<body>
+	<div id="container">
+       
+      <div class="title">A kickass Etch-A-Sketch</div>
+
+      <div id="buttons">
+        <ul>
+          <li><button class="button-style1" onclick="newGrid()">Click this awsome button</button></li>
+          <li><button class="button-style2" onclick="newGrid()">Click this awsome button too!</button></li>
+        </ul>
+      </div>   
+      
+
+       <div class="table_div">
+
+          <table> </table>
+
+       </div>
+
+
+
+  </div>
+
+<script src="jquery-1.11.1.min.js"></script>
+
+<script>
+
+  $(document).ready(function(){
+   
+  
+   for(var i = 0; i<256; i++) {
+
+   	  $("table").append('<div class="space"></div>');
+
+   }
+
+ $(".space").hover(function() {
+   $(this).addClass("hover");
+ });
+
+
+
+
+
+$(".button-style1").click(function() {
+
+  $(".space").remove();
+  $(".new").remove();
+  var number = prompt("Please enter a number between 0 and 65!");
+  
+  if (number >= 1 && number <= 65) {
+         for (var x = 0; x < number; x++) {
+                  for (var i = 0; i < number; i++) {
+                       $("table").append("<div class='new'></div>");
+                  };
+
+                  $("table").append("<div class='break'></div>");
+
+         };
+         divSize = (730)/number;
+         $(".new").width(divSize);
+         $(".new").height(divSize);
+    } else {
+
+         return alert("You didn't enter a number between 0 and 65, please click the button again!!!");
+    };
+
+$(".new").mouseover(function () {
+    var randomColor ="#"+ (Math.floor(Math.random()*900000) + 100000);
+    $(this).css("background-color",randomColor);
+});
+
+
+});
+
+
+$(".button-style2").click(function() {
+
+  $(".space").remove();
+  $(".new").remove();
+  var number = prompt("Please enter a number between 0 and 65!");
+  
+  if (number >= 1 && number <= 65) {
+         for (var x = 0; x < number; x++) {
+                  for (var i = 0; i < number; i++) {
+                       $("table").append("<div class='new'></div>");
+                  };
+
+                  $("table").append("<div class='break'></div>");
+
+         };
+         divSize = (730)/number;
+         $(".new").width(divSize);
+         $(".new").height(divSize);
+    } else {
+
+         return alert("You didn't enter a number between 0 and 65, please click the button again!!!");
+    };
+
+   $(".new").mouseover(function() {
+      
+      var nowOpacity = $(this).css("opacity");
+
+          if (nowOpacity > 0) {
+
+              $(this).css("opacity", nowOpacity - 0.1);
+
+          }
+
+   });
+
+
+});
+
+});
+
+</script>
+
+
+
+
+
+</body>
+</html>
